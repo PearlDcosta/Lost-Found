@@ -1,0 +1,17 @@
+# Local configuration and credentials
+resources/config.properties
+
+# Build output and generated files
+bin/
+sources.txt
+
+# Local dependencies and uploaded images
+lib/*.jar
+images/
+
+# IDE and OS files
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db

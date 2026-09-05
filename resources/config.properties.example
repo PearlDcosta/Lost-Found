@@ -1,0 +1,18 @@
+# Copy this file to config.properties and fill in local credentials.
+# Never commit config.properties.
+
+db.url=jdbc:mysql://localhost:3306/lostfound_db?useSSL=false&serverTimezone=UTC
+db.username=YOUR_MYSQL_USERNAME
+db.password=YOUR_MYSQL_PASSWORD
+
+rmi.host=localhost
+rmi.port=1099
+server.node.id=1
+rpc.host=localhost
+rpc.port=9877
+
+storage.provider=LOCAL
+storage.local.dir=images
+storage.bucket.url=YOUR_CLOUDINARY_CLOUD_NAME
+storage.access.key=YOUR_UNSIGNED_UPLOAD_PRESET
+storage.secret.key=UNUSED_FOR_UNSIGNED_UPLOADS
