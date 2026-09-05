@@ -47,7 +47,7 @@ public class ConfigLoader {
      * at startup is preferable to a confusing NullPointerException later.
      */
     public static String get(String key) {
-        String value = PROPERTIES.getProperty(key);
+        String value = valueFor(key);
         if (value == null || value.trim().isEmpty()) {
             throw new IllegalStateException("Missing required config key: '" + key + "' in " + CONFIG_FILE);
         }
@@ -56,12 +56,12 @@ public class ConfigLoader {
 
     /** Returns the value for {@code key}, or {@code defaultValue} if absent. */
     public static String get(String key, String defaultValue) {
-        String value = PROPERTIES.getProperty(key);
+        String value = valueFor(key);
         return (value == null || value.trim().isEmpty()) ? defaultValue : value.trim();
     }
 
     public static int getInt(String key, int defaultValue) {
-        String value = PROPERTIES.getProperty(key);
+        String value = valueFor(key);
         if (value == null || value.trim().isEmpty()) {
             return defaultValue;
         }
@@ -70,5 +70,12 @@ public class ConfigLoader {
         } catch (NumberFormatException e) {
             return defaultValue;
         }
+    }
+
+    /** Environment variables override file values so cloud credentials stay out of source control. */
+    private static String valueFor(String key) {
+        String environmentKey = "LOSTFOUND_" + key.toUpperCase().replace('.', '_');
+        String environmentValue = System.getenv(environmentKey);
+        return environmentValue == null ? PROPERTIES.getProperty(key) : environmentValue;
     }
 }
