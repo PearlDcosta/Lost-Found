@@ -11,15 +11,15 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.UUID;
 
-/**
- * Stores images on the local filesystem (the project's "images/"
- * folder by default). Used for offline development/testing without
- * needing real cloud credentials, per the project brief's explicit
- * request for a LocalStorageService fallback. The returned reference
- * is a "file:" URI, which ImageIcon/Toolkit can load exactly the same
- * way it loads an "http(s):" URI from CloudStorageService — the rest
- * of the app doesn't need to know or care which one produced it.
- */
+
+
+
+
+
+
+
+
+
 public class LocalStorageService implements StorageService {
 
     private final Path storageDir;
@@ -53,7 +53,7 @@ public class LocalStorageService implements StorageService {
             throw new StorageException("Failed to store image locally: " + e.getMessage(), e);
         }
 
-        return target.toUri().toString(); // e.g. file:/home/.../images/3f2a-....jpg
+        return target.toUri().toString(); 
     }
 
     @Override

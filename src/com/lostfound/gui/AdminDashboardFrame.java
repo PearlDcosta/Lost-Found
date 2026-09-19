@@ -16,11 +16,11 @@ import java.awt.*;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-/**
- * Landing screen after a successful admin login. Shows live
- * statistics (via COUNT-backed RMI calls) and links to the three
- * management screens.
- */
+
+
+
+
+
 public class AdminDashboardFrame extends JFrame {
 
     private JLabel totalUsersValue;
@@ -57,7 +57,7 @@ public class AdminDashboardFrame extends JFrame {
         subtitle.setFont(new Font("SansSerif", Font.PLAIN, 12));
         subtitle.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        // ---- Statistics panel ----
+        
         JPanel statsPanel = new JPanel(new GridLayout(4, 2, 15, 8));
         statsPanel.setBorder(BorderFactory.createTitledBorder("Live Statistics"));
         statsPanel.setMaximumSize(new Dimension(480, 160));
@@ -79,7 +79,7 @@ public class AdminDashboardFrame extends JFrame {
         statsPanel.add(statRow("Verified Items:", verifiedItemsValue));
         statsPanel.add(statRow("Returned Items:", returnedItemsValue));
 
-        // ---- Navigation buttons ----
+        
         JButton manageUsersButton = new JButton("Manage Users");
         JButton manageItemsButton = new JButton("Manage Items");
         JButton manageClaimsButton = new JButton("Manage Claims / Verify Claim");

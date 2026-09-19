@@ -45,14 +45,14 @@ public class ItemServiceImpl extends UnicastRemoteObject implements ItemServiceR
             throw new ValidationException("Item date is required.");
         }
 
-        // Cross-check the reported date against the server's OWN
-        // authoritative clock, obtained via the RPC-over-UDP service
-        // (ServerTimeRPCServer/Client), rather than trusting whatever
-        // system clock happens to be running wherever ItemServiceImpl
-        // executes. If the RPC time service is temporarily unreachable,
-        // fall back to the local clock so reporting still works —
-        // a network hiccup on a secondary service shouldn't block the
-        // core feature, but it IS logged so it's visible during a demo.
+        
+        
+        
+        
+        
+        
+        
+        
         LocalDate serverToday;
         try {
             serverToday = ServerTimeRPCClient.getServerDateTime().toLocalDate();
@@ -70,8 +70,8 @@ public class ItemServiceImpl extends UnicastRemoteObject implements ItemServiceR
                 description == null ? "" : description.trim(), location.trim(), itemDate);
         Item created = itemDAO.insert(item);
 
-        // Log the very first STATUS_HISTORY entry for this item — oldStatus
-        // is null because there was no prior status before creation.
+        
+        
         statusHistoryDAO.insert(new StatusHistory(created.getItemId(), null, created.getStatus(), userId));
 
         return created;

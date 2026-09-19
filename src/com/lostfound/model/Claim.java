@@ -4,23 +4,18 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-/**
- * Represents a row in the CLAIMS table — a student's claim on a
- * (usually FOUND) item. Passed across RMI by ClaimServiceRemote
- * (Phase 6), so it must be Serializable.
- */
 public class Claim implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private int claimId;
     private int itemId;
-    private int userId;              // claimant's user_id
+    private int userId;              
     private String claimDescription;
     private LocalDateTime claimDate;
     private ClaimStatus status;
 
-    /** Full constructor — used when reading a complete row from the DB. */
+    
     public Claim(int claimId, int itemId, int userId, String claimDescription,
                  LocalDateTime claimDate, ClaimStatus status) {
         this.claimId = claimId;
@@ -31,7 +26,7 @@ public class Claim implements Serializable {
         this.status = status;
     }
 
-    /** Constructor used when a student submits a new claim. */
+    
     public Claim(int itemId, int userId, String claimDescription) {
         this.itemId = itemId;
         this.userId = userId;

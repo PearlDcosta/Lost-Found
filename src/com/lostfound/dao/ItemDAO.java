@@ -18,13 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Data-access object for the ITEMS table. Includes a dynamic search()
- * method: every optional filter is still bound through a '?'
- * placeholder (never concatenated into the SQL text), so search
- * remains immune to SQL injection no matter how many filters are
- * combined.
- */
 public class ItemDAO {
 
     public Item insert(Item item) throws DatabaseException {
@@ -116,13 +109,6 @@ public class ItemDAO {
             throw new DatabaseException("Failed to fetch items for user " + userId + ": " + e.getMessage(), e);
         }
     }
-
-    /**
-     * Dynamic multi-field search. Any parameter may be null/blank to
-     * mean "don't filter on this field". Every clause added is still
-     * bound via '?', so this stays injection-safe regardless of how
-     * many filters the caller supplies.
-     */
     public List<Item> search(String itemName, String category, String location,
                               ItemType type, ItemStatus status, LocalDate itemDate) throws DatabaseException {
 
@@ -200,13 +186,6 @@ public class ItemDAO {
             throw new DatabaseException("Failed to update item: " + e.getMessage(), e);
         }
     }
-
-    /**
-     * Updates only the status column. Callers (ItemService) are
-     * responsible for validating the transition via
-     * ItemStatus.isValidTransition(...) BEFORE calling this method —
-     * the DAO layer intentionally does not know lifecycle rules.
-     */
     public void updateStatus(int itemId, ItemStatus newStatus) throws DatabaseException {
         String sql = "UPDATE ITEMS SET status = ? WHERE item_id = ?";
         try (Connection conn = DBConnection.getConnection();
@@ -240,8 +219,6 @@ public class ItemDAO {
             throw new DatabaseException("Failed to delete item: " + e.getMessage(), e);
         }
     }
-
-    /** Used by AdminDashboard (Phase 14) for statistics via COUNT queries. */
     public int countByStatus(ItemStatus status) throws DatabaseException {
         String sql = "SELECT COUNT(*) FROM ITEMS WHERE status = ?";
         try (Connection conn = DBConnection.getConnection();

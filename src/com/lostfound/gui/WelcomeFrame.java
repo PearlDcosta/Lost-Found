@@ -3,10 +3,10 @@ package com.lostfound.gui;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * First screen shown when the Swing client starts. Purely
- * navigational: Login, Register, or Exit.
- */
+
+
+
+
 public class WelcomeFrame extends JFrame {
 
     public WelcomeFrame() {

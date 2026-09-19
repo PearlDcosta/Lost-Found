@@ -14,22 +14,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-/**
- * Data-access object for the USERS table. Every method uses
- * PreparedStatement exclusively (never string-concatenated SQL),
- * which prevents SQL injection by construction.
- *
- * This class is called by AuthServiceImpl (Phase 6/7) — it has no
- * knowledge of RMI, Swing, or business rules; it only knows how to
- * turn User objects into rows and back.
- */
 public class UserDAO {
-
-    /**
-     * Inserts a new user and returns a copy of it with the
-     * database-generated user_id and created_at populated.
-     */
     public User insert(User user) throws DatabaseException {
         String sql = "INSERT INTO USERS (name, email, password, role) VALUES (?, ?, ?, ?)";
 
@@ -58,7 +43,7 @@ public class UserDAO {
 
         } catch (SQLException e) {
             if (e.getSQLState() != null && e.getSQLState().startsWith("23")) {
-                // integrity constraint violation, e.g. duplicate email (UNIQUE)
+                
                 throw new DatabaseException("A user with email '" + user.getEmail() + "' already exists.", e);
             }
             throw new DatabaseException("Failed to insert user: " + e.getMessage(), e);
@@ -182,7 +167,7 @@ public class UserDAO {
         }
     }
 
-    /** Maps the current row of a ResultSet to a User object. */
+    
     private User mapRow(ResultSet rs) throws SQLException {
         Timestamp createdAtTs = rs.getTimestamp("created_at");
         return new User(

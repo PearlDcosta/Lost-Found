@@ -15,11 +15,11 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
 
-/**
- * Admin screen: view every item report system-wide, delete
- * inappropriate/spam reports. Double-clicking a row opens the same
- * ItemDetailsFrame students use, for a full look before deciding.
- */
+
+
+
+
+
 public class ManageItemsFrame extends JFrame {
 
     private JTable table;

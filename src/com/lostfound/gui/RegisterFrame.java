@@ -12,14 +12,14 @@ import java.awt.*;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-/**
- * Registration screen for students. Admin accounts are deliberately
- * NOT self-registerable here — they are provisioned directly in the
- * database (see sql/database.sql's starter admin row) or created by
- * an existing admin through ManageUsersFrame (Phase 14). This mirrors
- * how real institutional systems work: anyone can sign up as a
- * student, but admin privileges are granted, not self-assigned.
- */
+
+
+
+
+
+
+
+
 public class RegisterFrame extends JFrame {
 
     private JTextField nameField;
@@ -127,7 +127,7 @@ public class RegisterFrame extends JFrame {
             protected User doInBackground() {
                 try {
                     AuthServiceRemote authService = RMIConnector.getAuthService();
-                    // Role is fixed to STUDENT here by design — see class Javadoc.
+                    
                     return authService.register(name, email, password, Role.STUDENT);
                 } catch (RemoteException | NotBoundException | ValidationException | AuthenticationException e) {
                     failure = e;

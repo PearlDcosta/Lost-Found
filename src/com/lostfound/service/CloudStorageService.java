@@ -17,32 +17,32 @@ import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * =====================================================================
- * CLOUD SERVICE SDK BOUNDARY
- * =====================================================================
- * This class is the ONLY place in the entire application that talks
- * to an external cloud API. Everything else — GUI, DAO, RMI services,
- * business logic — is strict Core Java with zero third-party
- * dependencies. This class itself is ALSO pure Core Java: it uses
- * java.net.http.HttpClient (standard since JDK 11) to call
- * Cloudinary's unsigned-upload REST endpoint directly, rather than
- * pulling in Cloudinary's Java SDK as a dependency. That keeps the
- * "Core Java only" requirement intact even at the cloud-storage
- * boundary — there is no framework here, just an HTTP POST.
- * =====================================================================
- *
- * Configure via resources/config.properties:
- *   storage.provider    = CLOUDINARY
- *   storage.bucket.url  = <your Cloudinary cloud name>
- *   storage.access.key  = <your UNSIGNED upload preset name>
- *   storage.secret.key  = (unused for unsigned uploads; kept for a
- *                          future signed-upload variant)
- *
- * To use a different provider (AWS S3, Supabase Storage, etc.),
- * this is the only class that needs to change — everything else
- * depends on the StorageService interface, not this implementation.
- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 public class CloudStorageService implements StorageService {
 
     private static final Pattern SECURE_URL_PATTERN =
@@ -115,7 +115,7 @@ public class CloudStorageService implements StorageService {
         }
     }
 
-    /** Hand-builds a multipart/form-data body — no library needed for this either. */
+    
     private byte[] buildMultipartBody(File file, String desiredFileName, String boundary) throws IOException {
         String fileName = desiredFileName != null ? desiredFileName : file.getName();
         byte[] fileBytes = Files.readAllBytes(file.toPath());

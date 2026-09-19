@@ -14,16 +14,16 @@ import java.net.URI;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-/**
- * Read-only detail view for a single item, opened by double-clicking a
- * row in SearchItemFrame (or MyReportsFrame, in a later phase). Fetches
- * the full Item via ItemServiceRemote.getItem(itemId) over RMI.
- *
- * The "Submit Claim" button only appears when the item is currently
- * FOUND and the viewer isn't the person who reported it (claiming your
- * own found report makes no sense). Clicking it opens SubmitClaimFrame
- * (Phase 11), which calls ClaimServiceRemote.submitClaim(...).
- */
+
+
+
+
+
+
+
+
+
+
 public class ItemDetailsFrame extends JFrame {
 
     private final int itemId;
@@ -153,14 +153,14 @@ public class ItemDetailsFrame extends JFrame {
         return row;
     }
 
-    /**
-     * Loads the item's image from whichever URL is stored — this works
-     * identically whether it's a "file:" URI from LocalStorageService
-     * or an "https:" URL from CloudStorageService, since ImageIcon/
-     * Toolkit handle both through the same standard URL machinery.
-     * Any failure (broken link, unreachable host) degrades to a plain
-     * text placeholder instead of crashing the details view.
-     */
+    
+
+
+
+
+
+
+
     private JLabel loadImagePreview(String imageUrl) {
         try {
             ImageIcon icon = new ImageIcon(URI.create(imageUrl).toURL());

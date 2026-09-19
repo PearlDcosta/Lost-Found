@@ -7,24 +7,24 @@ import com.lostfound.util.ConfigLoader;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-/**
- * Server-side entry point. Starts:
- *   1. An RMI registry, with AuthService/ItemService/ClaimService bound —
- *      Swing clients look these up via Registry.lookup(...) (Phase 6-9).
- *   2. A background ServerTimeRPCServer thread over UDP — the
- *      authoritative server-time source used by ItemServiceImpl
- *      (Phase 10).
- *   3. A RingElection node that elects itself coordinator on startup
- *      (Phase 15) — a ring of size 1 in this default single-server
- *      deployment, but a real run of the same election algorithm that
- *      would decide leadership among multiple LostFoundServer
- *      instances in a redundant, multi-node deployment.
- *
- * Run this BEFORE starting any Swing client. In production (Phase 20)
- * this single process runs on the cloud VM; clients then point at that
- * VM's public IP via rmi.host/rpc.host in config.properties instead of
- * localhost — no code changes required.
- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 public class LostFoundServer {
 
     public static void main(String[] args) {
@@ -49,7 +49,7 @@ public class LostFoundServer {
 
             int nodeId = ConfigLoader.getInt("server.node.id", 1);
             RingElection electionNode = new RingElection(nodeId);
-            electionNode.setNextNode(electionNode); // ring of size 1 for this single-server deployment
+            electionNode.setNextNode(electionNode); 
             electionNode.startElection();
             int coordinatorId = electionNode.awaitCoordinator(2000);
 

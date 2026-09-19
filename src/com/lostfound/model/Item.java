@@ -5,28 +5,23 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-/**
- * Represents a row in the ITEMS table — a single lost or found report.
- * Passed across RMI by ItemServiceRemote (Phase 6), so it must be
- * Serializable.
- */
 public class Item implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private int itemId;
-    private int userId;          // reporter's user_id
+    private int userId;          
     private String itemName;
     private String category;
-    private ItemType type;       // LOST or FOUND (declared at creation, never changes)
+    private ItemType type;       
     private String description;
     private String location;
-    private LocalDate itemDate;  // date the item was lost/found
-    private String imageUrl;     // reference into cloud object storage
-    private ItemStatus status;   // current lifecycle stage
+    private LocalDate itemDate;  
+    private String imageUrl;     
+    private ItemStatus status;   
     private LocalDateTime createdAt;
 
-    /** Full constructor — used when reading a complete row from the DB. */
+    
     public Item(int itemId, int userId, String itemName, String category, ItemType type,
                 String description, String location, LocalDate itemDate, String imageUrl,
                 ItemStatus status, LocalDateTime createdAt) {
@@ -43,12 +38,12 @@ public class Item implements Serializable {
         this.createdAt = createdAt;
     }
 
-    /**
-     * Constructor used when a student submits a new report, before it
-     * has an itemId/createdAt/imageUrl. Status defaults to match the
-     * declared type (LOST report starts at status LOST, FOUND report
-     * starts at status FOUND).
-     */
+    
+
+
+
+
+
     public Item(int userId, String itemName, String category, ItemType type,
                 String description, String location, LocalDate itemDate) {
         this.userId = userId;

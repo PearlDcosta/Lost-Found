@@ -7,13 +7,13 @@ import com.lostfound.util.Session;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * Landing screen after a successful student login.
- *
- * Report Lost Item, Report Found Item, and My Reports are wired up
- * as of Phase 8. Search Items (Phase 9) and My Claims (Phase 11) are
- * still placeholders — enabled once those phases build their screens.
- */
+
+
+
+
+
+
+
 public class StudentDashboardFrame extends JFrame {
 
     public StudentDashboardFrame() {

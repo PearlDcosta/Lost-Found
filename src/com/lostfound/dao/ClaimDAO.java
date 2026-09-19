@@ -15,9 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Data-access object for the CLAIMS table.
- */
+
+
+
 public class ClaimDAO {
 
     public Claim insert(Claim claim) throws DatabaseException {
@@ -178,7 +178,7 @@ public class ClaimDAO {
         }
     }
 
-    /** Used by AdminDashboard (Phase 14) for statistics via COUNT queries. */
+    
     public int countByStatus(ClaimStatus status) throws DatabaseException {
         String sql = "SELECT COUNT(*) FROM CLAIMS WHERE status = ?";
         try (Connection conn = DBConnection.getConnection();

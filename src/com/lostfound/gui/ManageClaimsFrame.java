@@ -14,11 +14,11 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
 
-/**
- * Admin screen: view every claim system-wide. Double-clicking a row
- * (or selecting it and clicking "Verify Selected Claim") opens
- * VerifyClaimFrame for that specific claim.
- */
+
+
+
+
+
 public class ManageClaimsFrame extends JFrame {
 
     private JTable table;
@@ -91,7 +91,7 @@ public class ManageClaimsFrame extends JFrame {
         add(panel);
     }
 
-    /** Public so VerifyClaimFrame can trigger a reload after approving/rejecting. */
+    
     public void refresh() {
         refreshButton.setEnabled(false);
         statusLabel.setText("Loading...");

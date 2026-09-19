@@ -23,21 +23,21 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-/**
- * Single reusable screen for reporting either a LOST or a FOUND item —
- * the ItemType passed to the constructor decides which. This avoids
- * duplicating the same form twice (ReportLostItemFrame /
- * ReportFoundItemFrame from the original spec are both just this
- * class configured differently), while still satisfying "Report Lost
- * Item" and "Report Found Item" as two distinct, working screens from
- * the user's point of view.
- *
- * Image upload uses a real JFileChooser and the StorageService
- * abstraction (Phase 12): the image is uploaded to whichever provider
- * StorageServiceFactory resolves (local folder or real cloud storage)
- * AFTER the item report itself is created, and the returned URL is
- * attached via ItemServiceRemote.updateItemImage(...).
- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 public class ReportItemFrame extends JFrame {
 
     private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -152,13 +152,13 @@ public class ReportItemFrame extends JFrame {
         add(panel);
     }
 
-    /**
-     * Opens a JFileChooser restricted to image files, then validates
-     * the selection via ValidationUtil (extension + size) before
-     * accepting it. Split into a separate handleImageSelected(File)
-     * method so tests can exercise the validation/acceptance logic
-     * directly without needing to drive the actual file dialog.
-     */
+    
+
+
+
+
+
+
     private void chooseImage() {
         JFileChooser chooser = new JFileChooser();
         chooser.setFileFilter(new FileNameExtensionFilter(

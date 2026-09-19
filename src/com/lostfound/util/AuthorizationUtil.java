@@ -6,30 +6,30 @@ import com.lostfound.exception.DatabaseException;
 import com.lostfound.model.Role;
 import com.lostfound.model.User;
 
-/**
- * Server-side role enforcement for admin-only remote operations.
- *
- * The Swing GUI already hides admin-only buttons from students (e.g.
- * StudentDashboardFrame never shows "Manage Users"), but that is only
- * a UI convenience — RMI is a plain network protocol, so nothing stops
- * a client from calling AuthServiceRemote.deleteUser(...) directly,
- * with any userId it likes, whether or not the GUI ever offered that
- * button. Every admin-only remote method MUST call requireAdmin(...)
- * as the very first thing it does, so the actual security boundary
- * lives on the server, not in which buttons happen to be visible.
- */
+
+
+
+
+
+
+
+
+
+
+
+
 public final class AuthorizationUtil {
 
     private AuthorizationUtil() {
-        // static utility class, no instances
+        
     }
 
-    /**
-     * Verifies that {@code callerUserId} refers to an existing user
-     * with the ADMIN role. Throws AuthenticationException otherwise —
-     * whether because the id doesn't exist, or because it belongs to
-     * a STUDENT account attempting an admin-only action.
-     */
+    
+
+
+
+
+
     public static void requireAdmin(UserDAO userDAO, int callerUserId)
             throws DatabaseException, AuthenticationException {
 

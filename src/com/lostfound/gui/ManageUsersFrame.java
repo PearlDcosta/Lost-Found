@@ -15,12 +15,12 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
 
-/**
- * Admin screen: view every registered user, delete accounts (e.g. for
- * abuse/spam) with a confirmation dialog. AuthServiceImpl refuses to
- * delete the last remaining ADMIN account, so the system can never be
- * locked out of its own admin panel.
- */
+
+
+
+
+
+
 public class ManageUsersFrame extends JFrame {
 
     private JTable table;

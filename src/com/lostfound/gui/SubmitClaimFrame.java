@@ -13,20 +13,20 @@ import java.awt.*;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-/**
- * Screen for submitting a claim against a FOUND item. Opened from
- * ItemDetailsFrame's "Submit Claim" button (only visible when the
- * item is FOUND and not the viewer's own report — see
- * ItemDetailsFrame, Phase 9).
- *
- * On success, both this frame and the ItemDetailsFrame that opened it
- * are closed, since the item's status has now changed (FOUND ->
- * CLAIM_REQUESTED) and the details on screen would be stale.
- */
+
+
+
+
+
+
+
+
+
+
 public class SubmitClaimFrame extends JFrame {
 
     private final int itemId;
-    private final ItemDetailsFrame parentDetailsFrame; // may be null
+    private final ItemDetailsFrame parentDetailsFrame; 
 
     private JTextArea descriptionArea;
     private JButton submitButton;

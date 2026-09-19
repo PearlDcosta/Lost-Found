@@ -7,24 +7,24 @@ import java.net.SocketException;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 
-/**
- * Minimal RPC-style server built directly on java.net.DatagramSocket
- * (no RMI, no HTTP framework) — this is the lab's "server calculator /
- * date-time server using RPC, make use of Datagram" requirement,
- * repurposed as a genuinely useful piece of the application: the
- * authoritative server clock used to validate report dates (see
- * ItemServiceImpl.reportItem / ServerTimeRPCClient).
- *
- * Protocol (deliberately simple for an academic demo):
- *   client -> server : UTF-8 bytes "GET_TIME"
- *   server -> client : UTF-8 bytes of LocalDateTime.now().toString()
- *                       (ISO-8601, e.g. "2026-08-23T09:15:30.123")
- * Any other request is silently ignored.
- *
- * Runs as a background daemon thread, started alongside the RMI
- * services by LostFoundServer.main() — both processes live on the
- * same server machine (see Phase 1 architecture diagram).
- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 public class ServerTimeRPCServer implements Runnable {
 
     public static final String REQUEST_COMMAND = "GET_TIME";
@@ -48,7 +48,7 @@ public class ServerTimeRPCServer implements Runnable {
             while (running) {
                 try {
                     DatagramPacket requestPacket = new DatagramPacket(buffer, buffer.length);
-                    socket.receive(requestPacket); // blocks until a request arrives
+                    socket.receive(requestPacket); 
 
                     String request = new String(requestPacket.getData(), 0,
                             requestPacket.getLength(), StandardCharsets.UTF_8).trim();
@@ -62,16 +62,16 @@ public class ServerTimeRPCServer implements Runnable {
                                 requestPacket.getAddress(), requestPacket.getPort());
                         socket.send(responsePacket);
                     }
-                    // unrecognized requests are silently ignored — a production
-                    // protocol would reply with an error code, but this stays
-                    // minimal on purpose for an academic demo.
+                    
+                    
+                    
 
                 } catch (IOException e) {
                     if (running) {
                         System.err.println("[ServerTimeRPCServer] error handling request: " + e.getMessage());
                     }
-                    // if running == false, this IOException is just the socket
-                    // closing from stop() unblocking receive() — expected, not an error
+                    
+                    
                 }
             }
         } catch (SocketException e) {
@@ -83,7 +83,7 @@ public class ServerTimeRPCServer implements Runnable {
         }
     }
 
-    /** Stops the server by closing the socket, which unblocks the pending receive(). */
+    
     public void stop() {
         running = false;
         if (socket != null) {

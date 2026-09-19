@@ -1,10 +1,5 @@
 package com.lostfound.model;
 
-/**
- * Declares whether a report was filed as a lost item or a found item.
- * This is separate from ItemStatus: type never changes after creation,
- * while status evolves through the lifecycle.
- */
 public enum ItemType {
     LOST,
     FOUND;

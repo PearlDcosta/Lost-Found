@@ -4,21 +4,13 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-/**
- * Represents a row in the STATUS_HISTORY table — an audit trail entry
- * for one item status transition. oldStatus is null for the very
- * first entry (when an item is first reported, there is no prior
- * status). changedBy is the user who triggered the change: the
- * reporter for the initial entry, or the admin for every subsequent
- * transition driven through VerifyClaimFrame/UpdateStatusFrame.
- */
 public class StatusHistory implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private int historyId;
     private int itemId;
-    private ItemStatus oldStatus; // null for the initial entry
+    private ItemStatus oldStatus; 
     private ItemStatus newStatus;
     private int changedBy;
     private LocalDateTime changedAt;

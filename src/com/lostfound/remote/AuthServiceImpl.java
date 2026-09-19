@@ -15,12 +15,12 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Server-side implementation of AuthServiceRemote. Extending
- * UnicastRemoteObject is what turns this into an actual remote
- * object — its methods genuinely execute here, on the server, when
- * called by a client holding only a stub reference.
- */
+
+
+
+
+
+
 public class AuthServiceImpl extends UnicastRemoteObject implements AuthServiceRemote {
 
     private final UserDAO userDAO = new UserDAO();
@@ -67,8 +67,8 @@ public class AuthServiceImpl extends UnicastRemoteObject implements AuthServiceR
             Optional<User> userOpt = userDAO.findByEmail(email.trim().toLowerCase());
 
             if (userOpt.isEmpty() || !PasswordUtil.verify(password, userOpt.get().getPassword())) {
-                // Deliberately generic: never reveal whether the email
-                // itself exists, only that "email or password" is wrong.
+                
+                
                 throw new AuthenticationException("Invalid email or password.");
             }
 
@@ -83,7 +83,7 @@ public class AuthServiceImpl extends UnicastRemoteObject implements AuthServiceR
     public List<User> getAllUsers(int callerUserId) throws RemoteException, DatabaseException, AuthenticationException {
         AuthorizationUtil.requireAdmin(userDAO, callerUserId);
         List<User> users = userDAO.findAll();
-        // never send password hashes over the wire, even to the admin GUI
+        
         return users.stream().map(User::withoutPassword).collect(java.util.stream.Collectors.toList());
     }
 

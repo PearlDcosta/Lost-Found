@@ -12,23 +12,23 @@ import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
-/**
- * Client side of the RPC-over-UDP server-time service. Sends a
- * "GET_TIME" request datagram and parses the ISO-8601 response into a
- * LocalDateTime — a plain synchronous request/response call built
- * directly on sockets, no RMI stub involved (that's Phase 6's job;
- * this is the separate, lower-level RPC lab requirement).
- */
+
+
+
+
+
+
+
 public final class ServerTimeRPCClient {
 
     private static final int TIMEOUT_MS = 3000;
     private static final int BUFFER_SIZE = 256;
 
     private ServerTimeRPCClient() {
-        // static utility class, no instances
+        
     }
 
-    /** Uses rpc.host / rpc.port from config.properties. */
+    
     public static LocalDateTime getServerDateTime() throws RPCException {
         String host = ConfigLoader.get("rpc.host", "localhost");
         int port = ConfigLoader.getInt("rpc.port", 9877);

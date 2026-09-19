@@ -14,11 +14,11 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
 
-/**
- * Shows every item the currently logged-in student has reported
- * (both LOST and FOUND), fetched via ItemServiceRemote.getItemsByUser
- * over RMI and displayed in a JTable.
- */
+
+
+
+
+
 public class MyReportsFrame extends JFrame {
 
     private JTable table;

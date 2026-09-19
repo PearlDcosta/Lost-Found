@@ -19,13 +19,13 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.List;
 
-/**
- * Search screen: any combination of name / category / location / type
- * / status / date. Every field is optional — leaving one blank means
- * "don't filter on it" (see ItemDAO.search, Phase 5, and
- * ItemServiceRemote.searchItems, Phase 6). Results appear in a JTable;
- * double-clicking a row opens ItemDetailsFrame for that item.
- */
+
+
+
+
+
+
+
 public class SearchItemFrame extends JFrame {
 
     private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -56,7 +56,7 @@ public class SearchItemFrame extends JFrame {
         JPanel root = new JPanel(new BorderLayout(10, 10));
         root.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
 
-        // ---- Filter panel ----
+        
         JPanel filterPanel = new JPanel(new GridBagLayout());
         filterPanel.setBorder(BorderFactory.createTitledBorder("Search Filters"));
         GridBagConstraints gbc = new GridBagConstraints();
@@ -111,7 +111,7 @@ public class SearchItemFrame extends JFrame {
 
         root.add(filterPanel, BorderLayout.NORTH);
 
-        // ---- Results table ----
+        
         String[] columns = {"Item ID", "Name", "Category", "Type", "Location", "Date", "Status"};
         tableModel = new DefaultTableModel(columns, 0) {
             @Override

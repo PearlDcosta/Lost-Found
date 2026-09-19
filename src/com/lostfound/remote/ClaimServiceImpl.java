@@ -28,12 +28,12 @@ public class ClaimServiceImpl extends UnicastRemoteObject implements ClaimServic
     private final StatusHistoryDAO statusHistoryDAO = new StatusHistoryDAO();
     private final UserDAO userDAO = new UserDAO();
 
-    // A ring of size 1 for this single-server deployment: the node's
-    // "next" is itself, so releasing immediately re-arms the token for
-    // the next acquirer. This still correctly serializes the
-    // approve/reject critical section across the concurrent threads
-    // RMI spins up per incoming client call — see class Javadoc and
-    // TokenRingMutex's Javadoc for the multi-server-node case.
+    
+    
+    
+    
+    
+    
     private final TokenRingMutex claimMutex;
     private static final long TOKEN_TIMEOUT_MS = 5000;
 
@@ -60,7 +60,7 @@ public class ClaimServiceImpl extends UnicastRemoteObject implements ClaimServic
         Claim claim = new Claim(itemId, userId, description.trim());
         Claim insertedClaim = claimDAO.insert(claim);
 
-        // FOUND -> CLAIM_REQUESTED is a valid transition (see ItemStatus)
+        
         itemDAO.updateStatus(itemId, ItemStatus.CLAIM_REQUESTED);
         statusHistoryDAO.insert(new StatusHistory(itemId, ItemStatus.FOUND, ItemStatus.CLAIM_REQUESTED, userId));
 
@@ -108,7 +108,7 @@ public class ClaimServiceImpl extends UnicastRemoteObject implements ClaimServic
             }
 
             claimDAO.updateStatus(claimId, ClaimStatus.APPROVED);
-            // CLAIM_REQUESTED -> VERIFIED is a valid transition (see ItemStatus)
+            
             itemDAO.updateStatus(claim.getItemId(), ItemStatus.VERIFIED);
             statusHistoryDAO.insert(new StatusHistory(claim.getItemId(),
                     ItemStatus.CLAIM_REQUESTED, ItemStatus.VERIFIED, adminUserId));
@@ -143,8 +143,8 @@ public class ClaimServiceImpl extends UnicastRemoteObject implements ClaimServic
             }
 
             claimDAO.updateStatus(claimId, ClaimStatus.REJECTED);
-            // CLAIM_REQUESTED -> FOUND (reject reverts the item so someone
-            // else can still claim it) is a valid transition (see ItemStatus)
+            
+            
             itemDAO.updateStatus(claim.getItemId(), ItemStatus.FOUND);
             statusHistoryDAO.insert(new StatusHistory(claim.getItemId(),
                     ItemStatus.CLAIM_REQUESTED, ItemStatus.FOUND, adminUserId));

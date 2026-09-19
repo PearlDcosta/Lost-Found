@@ -14,13 +14,6 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Data-access object for the STATUS_HISTORY audit trail. Every write
- * here happens from within the SAME critical section that changes
- * ITEMS.status (see ItemServiceImpl, ClaimServiceImpl) — this DAO
- * itself doesn't enforce that, it just faithfully records what it's
- * told, exactly like the other DAOs.
- */
 public class StatusHistoryDAO {
 
     public StatusHistory insert(StatusHistory entry) throws DatabaseException {

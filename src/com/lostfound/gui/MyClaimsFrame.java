@@ -16,13 +16,13 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
 
-/**
- * Shows every claim the currently logged-in student has submitted,
- * with the claimed item's name looked up alongside it for readability
- * (a small extra RMI call per row — fine at this scale, and a
- * reasonable trade-off to avoid overloading the Claim model itself
- * with a denormalized item name).
- */
+
+
+
+
+
+
+
 public class MyClaimsFrame extends JFrame {
 
     private JTable table;

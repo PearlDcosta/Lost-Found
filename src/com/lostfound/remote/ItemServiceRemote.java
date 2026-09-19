@@ -12,13 +12,13 @@ import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.util.List;
 
-/**
- * RMI remote interface for item reporting, search, and lifecycle
- * management. Item objects returned here are Serializable model
- * objects (Phase 3) that travel across the network as remote-object
- * communication (lab Module 3) — the client works with a local copy
- * of the data, not a live remote reference to a database row.
- */
+
+
+
+
+
+
+
 public interface ItemServiceRemote extends Remote {
 
     Item reportItem(int userId, String itemName, String category, ItemType type,
@@ -37,17 +37,17 @@ public interface ItemServiceRemote extends Remote {
 
     void updateItemImage(int itemId, String imageUrl) throws RemoteException, DatabaseException;
 
-    /**
-     * Attempts to move an item to {@code newStatus}. Throws
-     * ValidationException if the transition is not legal per
-     * ItemStatus.isValidTransition(...). {@code changedByUserId} must
-     * belong to an ADMIN account (verified server-side) and is
-     * recorded in STATUS_HISTORY as the actor responsible for the change.
-     */
+    
+
+
+
+
+
+
     void updateItemStatus(int itemId, ItemStatus newStatus, int changedByUserId)
             throws RemoteException, DatabaseException, ValidationException, AuthenticationException;
 
-    /** Admin-only: requires adminUserId to belong to an ADMIN account (verified server-side). */
+    
     void deleteItem(int itemId, int adminUserId) throws RemoteException, DatabaseException, AuthenticationException;
 
     int countByStatus(ItemStatus status) throws RemoteException, DatabaseException;

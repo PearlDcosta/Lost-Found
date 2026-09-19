@@ -15,18 +15,18 @@ import java.awt.*;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-/**
- * Admin screen for a single claim: shows the claim description
- * alongside the claimed item's details, with Approve/Reject buttons.
- * This is where the Token Ring mutex (Phase 13) actually gets
- * exercised — if two admins have this frame open for the same claim
- * at once, only one Approve/Reject click will win; the other gets a
- * clear "already handled" message rather than a silent double-action.
- */
+
+
+
+
+
+
+
+
 public class VerifyClaimFrame extends JFrame {
 
     private final int claimId;
-    private final ManageClaimsFrame parentFrame; // may be null
+    private final ManageClaimsFrame parentFrame; 
 
     private JPanel contentPanel;
     private JButton approveButton;

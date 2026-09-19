@@ -12,12 +12,12 @@ import java.awt.*;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-/**
- * Login screen. Submits credentials to AuthServiceRemote over RMI —
- * this is a genuine network call to the server process (LostFoundServer),
- * not a local method call. The call runs on a SwingWorker background
- * thread so the UI never freezes while waiting on the network.
- */
+
+
+
+
+
+
 public class LoginFrame extends JFrame {
 
     private JTextField emailField;
@@ -75,7 +75,7 @@ public class LoginFrame extends JFrame {
         panel.add(statusLabel, gbc);
 
         loginButton.addActionListener(e -> attemptLogin());
-        passwordField.addActionListener(e -> attemptLogin()); // Enter key submits
+        passwordField.addActionListener(e -> attemptLogin()); 
 
         backButton.addActionListener(e -> {
             new WelcomeFrame().setVisible(true);
@@ -98,8 +98,8 @@ public class LoginFrame extends JFrame {
         statusLabel.setForeground(Color.BLACK);
         statusLabel.setText("Connecting to server...");
 
-        // Network call happens off the Event Dispatch Thread so the
-        // window stays responsive while RMI does its round trip.
+        
+        
         SwingWorker<User, Void> worker = new SwingWorker<>() {
             private Exception failure;
 

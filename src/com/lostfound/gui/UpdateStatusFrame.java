@@ -17,14 +17,14 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Admin screen for manually advancing an item's lifecycle status —
- * most importantly VERIFIED -> RETURNED, once the item has physically
- * changed hands and there's no claim-approval action left to trigger
- * it automatically. Only shows target statuses that
- * ItemStatus.isValidTransition(...) actually allows from the item's
- * current status, so this can never be used to skip a stage.
- */
+
+
+
+
+
+
+
+
 public class UpdateStatusFrame extends JFrame {
 
     private final int itemId;
